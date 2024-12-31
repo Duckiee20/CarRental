@@ -1,3 +1,30 @@
+<?php
+include "connect.php";
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM User WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+
+        if (password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['USER_ID'];
+            $_SESSION['name'] = $user['Name'];
+            echo "<script>window.location.href = 'homepage.php';</script>";
+        } else {
+            echo "<script>alert('Invalid password');</script>";
+        }
+    } else {
+        echo "<script>alert('No user found with this email');</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
