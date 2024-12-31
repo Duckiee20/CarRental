@@ -17,14 +17,14 @@
         <img src="auto-car-logo-template-vector-icon.jpg" alt="Logo" class="header-image">
     </header>
     <hr>
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Name" name="name" id="name" required>
+    <label for="name"><b>Name</b></label><br>
+    <input type="text" placeholder="Name" name="name" id="name" required><br>
 
     <label for="phone"><b>Enter your phone number:</b></label><br>
     <input type="tel" placeholder="Phone Number" id="phone" name="phone" pattern=" /(^(\+8801|8801|01))[1|3-9]{1}(\d){8}$/" required><br>
 
-    <label for="address"><b>Address</b></label>
-    <input type="text" placeholder="Address" name="address" id="address" required>
+    <label for="address"><b>Address</b></label><br>
+    <input type="text" placeholder="Address" name="address" id="address" required><br>
 
      <label for="nid"><b>Enter NID Number</b></label><br>
     <input type="ssn" placeholder="NID Number" name="nid" id="nid" required><br>
