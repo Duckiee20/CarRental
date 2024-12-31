@@ -59,7 +59,7 @@ CREATE TABLE PAYMENT
 );
 Create Table Customer
 (
-	USER_ID INT Primary key,
+	USER_ID INT Primary key auto_increment,
    	Name varchar(40),
     	email varchar(40),
 	Password varchar(50) NOT NULL
@@ -99,7 +99,7 @@ VALUES
 (4, 5000, NULL, NULL, TRUE, FALSE),
 (5, 8200, '5555666677778888', 'Draco Malfoy', FALSE, TRUE);
 
-INSERT INTO User (USER_ID, Name, email, date_of_birth, phone, address, License_No)
+INSERT INTO Customer (USER_ID, Name, email, date_of_birth, phone, address, License_No)
 VALUES 
 (1, 'Draco Malfoy', 'dracomalfoy@gmail.com', '1990-01-15', 123456789, '123 Main St, Springfield', 'D12345678'),
 (2, 'Jane Smith', 'janesmith@gmail.com', '1985-07-20', 987654321, '456 Elm St, Riverside', 'S98765432'),
