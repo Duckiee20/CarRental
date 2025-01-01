@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "connect.php"; 
 
 // Initialize variables to hold form data and error messages
 $name = $phone = $address = $license = $email = $date_of_birth = $password = $confirm_password = "";
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate the inputs
     if (empty($name)) {
         $nameErr = "Name is required";
-    } elseif (!preg_match("/^[a-zA-Z ]+$/", $name)) {
+    } elseif (!preg_match("/^[a-zA-Z ]*$/", $name)) {
         $nameErr = "Name should only contain letters and spaces";
     }
 
@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif (!preg_match("/^[0-9]{11}$/", $phone)) { // Checks for exactly 11 digits
         $phoneErr = "Phone number must be exactly 11 digits";
     } else {
-        // Check if phone number already exists
         $phone_check_query = "SELECT * FROM customer WHERE phone='$phone'";
         $result = mysqli_query($conn, $phone_check_query);
         if (mysqli_num_rows($result) > 0) {
@@ -81,11 +80,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // If there are no errors, insert into the database
     if (empty($nameErr) && empty($phoneErr) && empty($addressErr) && empty($licenseErr) && empty($emailErr) && empty($date_of_birthErr) && empty($passwordErr) && empty($confirm_passwordErr)) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
         // Prepare the SQL query to insert data
         $query = "INSERT INTO Customer (Name, phone, address, license_no, email, date_of_birth, password) 
-                  VALUES ('$name', '$phone', '$address', '$license', '$email', '$date_of_birth', '$hashed_password')";
+                  VALUES ('$name', '$phone', '$address', '$license', '$email', '$date_of_birth', '$password')";
 
         // Execute the query
         if (mysqli_query($conn, $query)) {
@@ -118,12 +115,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
     <hr>
     <label for="name"><b>Name</b></label><br>
-    <input type="text" placeholder="Name" name="name" id="name" value="<?php echo $name; ?>" required>
-    <span class="error"><?php echo $nameErr; ?></span><br>
+    <input type="text" placeholder="Name" name="name" id="name" value="<?php echo $name; ?>" required><br>
+    <span class="error"><?php echo $nameErr; ?></span>
 
     <label for="phone"><b>Enter your phone number:</b></label><br>
-    <input type="tel" placeholder="Phone Number" id="phone" name="phone" pattern=" /(^(\+8801|8801|01))[1|3-9]{1}(\d){8}$/" value="<?php echo $phone; ?>" required>
-    <span class="error"><?php echo $phoneErr; ?></span><br>
+    <input type="tel" placeholder="Phone Number" id="phone" name="phone" value="<?php echo $phone; ?>" required><br>
+    <span class="error"><?php echo $phoneErr; ?></span>
 
     <label for="address"><b>Address</b></label><br>
     <input type="text" placeholder="Address" name="address" id="address" value="<?php echo $address; ?>" required><br>
@@ -138,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <span class="error"><?php echo $emailErr; ?></span><br>
 
     <label for="date_of_birth"><b>Date of Birth</b></label><br>
-    <input type="date" placeholder="Enter date of birth" id="date_of_birth" name="date_of_birth" value="<?php echo $date_of_birth; ?>" required> 
+    <input type="date" placeholder="Enter date of birth" id="date_of_birth" name="date_of_birth" value="<?php echo $date_of_birth; ?>" required><br>
     <span class="error"><?php echo $date_of_birthErr; ?></span><br>
 
     <label for="psw"><b>Password</b></label><br>
