@@ -18,25 +18,24 @@
     </header>
     <br>
 
-
-
-
-
     <section class="home" id="home">
-    <div class="wrapper">
-    <form action="">
-    <label for="pickup"><span style="background-color:gold;" ><b>Pick up date</b></span></label>
-    <input type="date" name="pickup" id="pickup" required><br>
-    <br>
-    <label for="return"><span style="background-color:gold"><b>Return date</b></span></</label>
-    <input type="date" name="return" id="return" required>
-    </form>
-    <br>
-    <br>
-    <a href="selectcar.php">
-    <span style="height: 20px;width:120px; background-color: red; color:white;font-size:150%; display:inline-block ">Select Car</span></a>
-    </div>
-    </section>
+        <div class="wrapper">
+            <form action="selectcar.php" method="POST">
+                <label for="pickup">
+                    <span style="background-color:gold;"><b>Pick up date</b></span>
+                </label>
+                <input type="date" name="pickup" id="pickup" required><br><br>
 
+                <label for="return">
+                    <span style="background-color:gold"><b>Return date</b></span>
+                </label>
+                <input type="date" name="return" id="return" required><br><br>
+
+                <button type="submit" style="height: 40px; width: 120px; background-color: red; color: white; font-size: 150%; border: none; cursor: pointer;">
+                    Select Car
+                </button>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
