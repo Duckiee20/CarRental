@@ -62,7 +62,7 @@ Create Table Customer
 	USER_ID INT Primary key auto_increment,
    	Name varchar(40),
     	email varchar(40),
-	Password varchar(50) NOT NULL
+	Password varchar(50) NOT NULL,
     	date_of_birth date,
     	phone int,
    	address varchar(50),
